@@ -1,0 +1,15 @@
+
+            DataTable  GuestReport = ReportCustomerCls.sp_Report_GuestReport(dtFromDate, dtToDate);
+
+            Microsoft.Reporting.WinForms.ReportParameter[] param1 = new Microsoft.Reporting.WinForms.ReportParameter[3];
+            param1[0] = new Microsoft.Reporting.WinForms.ReportParameter("Iscolor", clr);
+            param1[1] = new Microsoft.Reporting.WinForms.ReportParameter("Company", strCompany);
+            param1[2] = new Microsoft.Reporting.WinForms.ReportParameter("IsCompany", company);
+            reportViewer1.LocalReport.DataSources.Clear();
+          //  reportViewer1.LocalReport.DataSources.Add("DataSet_Name", GuestReport);
+           
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("ds_Sales_Return_Customer_Detail_SlNowise", GuestReport));
+
+            reportViewer1.LocalReport.Refresh();
+
+
